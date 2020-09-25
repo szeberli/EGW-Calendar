@@ -1,6 +1,6 @@
-# electron-communication-example
+# EGW-Calendar on Screen	
 
-An example implementation on how to communicate between two electron browser windows.
+Die Agenda wird mittels Software auf den Screen projeziert.
 
 To try it out clone this repository, run `npm install && npm start`.
 
