@@ -1,11 +1,9 @@
-const {app, screen } = require('electron');
+const {app, screen, remote } = require('electron');
 // const ipc = require('electron').ipcRenderer;
 const BrowserWindow = require('electron').remote.BrowserWindow;
 const openSecondWindowButton = document.getElementById('open-second-window');
 
-// require('electron').remote.getCurrentWindow().on('close', evt => evt.preventDefault())
-
-// let win
+let win
 openSecondWindowButton.addEventListener('click', (event) => {
 	  let displays = screen.getAllDisplays()
 	  let externalDisplay = displays.find((display) => {
@@ -16,8 +14,8 @@ openSecondWindowButton.addEventListener('click', (event) => {
 		  x: externalDisplay.bounds.x + 50,
 		  y: externalDisplay.bounds.y + 50,
 		  // show: false,
-		  width: 800,
-		  height: 600,
+		//   width: 800,
+		//   height: 600,
 		  fullscreen: true,
 		  frame: false,
 		  autoHideMenuBar: true,
@@ -26,10 +24,15 @@ openSecondWindowButton.addEventListener('click', (event) => {
 		    nodeIntegration: true,
 		  }
 		})
-		win.loadURL('https://egw.computech.dev/screen');
+		// win.loadURL('https://egw.computech.dev/screen');
+		// Load Global Varialbel
+		var_winlink = remote.getGlobal('var_url')
+		win.loadURL(var_winlink);
 		// win.webContents.openDevTools()
 	}
 });
+
+
 app.on('window-all-closed', () => {
 	app.quit()
   })

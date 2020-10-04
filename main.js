@@ -1,22 +1,26 @@
-const { app, BrowserWindow, remote } = require('electron')
-// const electron = require('electron')
-// const ipc = require('electron').ipcMain;
-// Module to control application life.
-// const app = electron.app
-// Module to create native browser window.
-// const BrowserWindow = electron.BrowserWindow
-
+const { app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const url = require('url')
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 let win
 
-// ipc.on('reply', (event, message) => {
-// 	console.log(event, message);
-// 	mainWindow.webContents.send('messageFromMain', `This is the message from the second window: ${message}`);
+// Load text File
+var fs = require('fs');
+var readStream = fs.createReadStream(path.join(__dirname) + '/link.txt', 'utf8');
+let data = ''
+readStream.on('data', function(chunk) {
+    data += chunk;
+}).on('end', function() {
+    console.log("Data from link.txt", data);
+    // Set Globale Varialbe
+    global.var_url = data;
+});
+
+
 // })
 function createWindow () {
   // Create the browser window.
@@ -25,9 +29,10 @@ function createWindow () {
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
-    slashes: true,
+    slashes: false,
+    autoHideMenuBar: true,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
     }
   }))
 
@@ -36,11 +41,6 @@ function createWindow () {
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    // mainWindow = null;
-    // win = null;
     app.quit(0)
   })
 }
@@ -62,4 +62,4 @@ app.on('window-all-closed', () => {
   win = null
   // process.exit(1)
   app.quit(0)
-})
+});
