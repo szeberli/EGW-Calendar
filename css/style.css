@@ -1,0 +1,11 @@
+embed.link {
+    overflow: hidden;
+}
+
+embed.link, embed.link html, pre{
+    margin: 0px;
+    overflow: hidden;
+}
+pre {
+    margin: 0;
+}

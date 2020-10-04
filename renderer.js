@@ -3,6 +3,7 @@ const {app, screen, remote } = require('electron');
 const BrowserWindow = require('electron').remote.BrowserWindow;
 const openSecondWindowButton = document.getElementById('open-second-window');
 
+
 let win
 openSecondWindowButton.addEventListener('click', (event) => {
 	  let displays = screen.getAllDisplays()
@@ -33,6 +34,6 @@ openSecondWindowButton.addEventListener('click', (event) => {
 });
 
 
-app.on('window-all-closed', () => {
-	app.quit()
-  })
+// app.on('window-all-closed', () => {
+// 	app.quit()
+//   })
