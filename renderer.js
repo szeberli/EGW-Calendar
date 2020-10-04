@@ -30,3 +30,6 @@ openSecondWindowButton.addEventListener('click', (event) => {
 		// win.webContents.openDevTools()
 	}
 });
+app.on('window-all-closed', () => {
+	app.quit()
+  })

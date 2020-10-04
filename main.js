@@ -41,6 +41,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     // mainWindow = null;
     // win = null;
+    app.quit(0)
   })
 }
 
@@ -56,3 +57,9 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+app.on('window-all-closed', () => {
+  win = null
+  // process.exit(1)
+  app.quit(0)
+})
