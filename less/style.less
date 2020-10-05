@@ -1,0 +1,71 @@
+// out: ../css/style.css, compress: true, sourceMap: true
+
+@import 'base.less';
+
+/***
+    Color
+*******************************************************************************/
+@color1: #333d8a;                    //Farbige Version
+// @color1: #505050;                    //Schwarz/Weiss Version
+@color1_background: #fff;            //Hintergrund Farbe
+@color2: #f8fafa;                    //Shadow, Admin Buttons, etc
+@color3: #fff;            			 //Hintergrund Farbe
+@color4: #505050;                     // Akzentfarbe
+
+/* Text Color  ********************************************/
+@text__color: #000000;
+@text__color_inverse: #ffffff;
+@links__color: #333d8a;
+@links__button__color: #fff;
+
+* {
+    font-family: Roboto;
+}
+
+/* §Überschriften h1, h2, h3, h4, h5 ,h6*/
+@h-font-size: 48px;     //Schriftgrösse
+@difference: 10;         //wie viele Pixel kleiner
+.h(@index) when (@index > 0) {
+    h@{index} {
+        font-size: @h-font-size - @index*@difference+@index*@index/1.3;
+        font-weight: 700;
+        text-align: left;
+        color: @color1;
+        margin-bottom: .5em;
+        line-height: 1.2;
+
+        a, a:link, a:hover, a:visited {
+            color: @color1;
+            text-decoration: none;
+        }
+    }
+    .h(@index - 1);
+}
+.h(6);
+
+
+.head {
+    .logo {
+        img {
+            max-width: 300px;
+        }
+    }
+}
+
+
+
+embed.link {
+    overflow: hidden;
+}
+
+embed.link, embed.link html, pre{
+    margin: 0px;
+    overflow: hidden;
+}
+pre {
+    margin: 0;
+}
+
+.button {
+    .button();
+}

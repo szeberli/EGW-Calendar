@@ -8,6 +8,8 @@ const url = require('url')
 let mainWindow
 let win
 
+
+
 // Load text File
 var fs = require('fs');
 var readStream = fs.createReadStream(path.join(__dirname) + '/link.txt', 'utf8');
@@ -23,20 +25,21 @@ readStream.on('data', function(chunk) {
 // })
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1200, height: 800})
+  mainWindow = new BrowserWindow({width: 800, height: 600})
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: false,
-    autoHideMenuBar: true,
+    autoHideMenuBar: false,
+    frame: false,
     webPreferences: {
       nodeIntegration: false,
     }
   }))
-
+  mainWindow.setMenuBarVisibility(false)
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

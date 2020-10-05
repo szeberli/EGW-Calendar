@@ -27,7 +27,7 @@ openSecondWindowButton.addEventListener('click', (event) => {
 		})
 		// win.loadURL('https://egw.computech.dev/screen');
 		// Load Global Varialbel
-		var_winlink = remote.getGlobal('var_url')
+		var_winlink = 'https://' + remote.getGlobal('var_url') + "/screen"
 		win.loadURL(var_winlink);
 		// win.webContents.openDevTools()
 	}
