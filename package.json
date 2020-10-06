@@ -9,7 +9,6 @@
     "package-linux": "electron-packager . EGW_Calendar --overwrite --asar=true --platform=linux --arch=x64 --icon=resources/icon.ico --prune=true --out=release-builds/linux",
     "start": "electron ."
   },
-
   "keywords": [
     "Electron",
     "quick",
